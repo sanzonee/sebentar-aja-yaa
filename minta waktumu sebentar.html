@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>sebentar yaa</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, #1f2933, #111827);
+      color: #f9fafb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .card {
+      background: rgba(255,255,255,0.05);
+      padding: 24px 28px;
+      border-radius: 16px;
+      max-width: 360px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+    h1 {
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+    }
+    p {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+    button {
+      background: #6366f1;
+      border: none;
+      color: white;
+      padding: 10px 18px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: transform 0.2s, background 0.2s;
+    }
+    button:hover {
+      background: #4f46e5;
+      transform: translateY(-1px);
+    }
+    .hidden { display: none; }
+    .options button {
+      margin: 6px;
+      background: #374151;
+    }
+    .options button.correct {
+      background: #10b981;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div id="step1">
+      <h1>dell... minta waktumu sebentar aja yaa</h1>
+      <p>benttaaarrr aja, jawab satu hal kecil dulu ya. (btw ini aku bikin sendiri)</p>
+      <button onclick="nextStep(2)">oke</button>
+    </div>
+
+    <div id="step2" class="hidden">
+      <h1>pilih jawaban yang paling masuk akal</h1>
+      <p>kalo ada salah paham, yang paling baik itu apa?</p>
+      <div class="options">
+        <button onclick="wrong()">Didiemin</button>
+        <button onclick="wrong()">Dihindari</button>
+        <button onclick="correct(this)">Dibicarakan</button>
+      </div>
+    </div>
+
+    <div id="step3" class="hidden">
+      <h1>sip yaa</h1>
+      <p>Jawaban kamu benar.</p>
+      <button onclick="nextStep(4)">lanjut</button>
+    </div>
+
+    <div id="step4" class="hidden">
+      <h1>sekarang kamu jujur sama aku</h1>
+      <p>Aku cuma mau nanya satu hal ke kamu</p>
+      <button onclick="nextStep(5)">apa?</button>
+    </div>
+
+    <div id="step5" class="hidden">
+      <h1>mau ga kita bicarain baik-baik biar kayak dulu lagi?</h1>
+      <p><strong>tanpa diem, tanpa saling cuek. cuma ngobrol bahkan call kalo mau.</strong></p>
+      <p style="font-size:0.85rem; opacity:0.8;">kalo mau nomerku masih yang sama kok.</p>
+    </div>
+  </div>
+
+  <script>
+    function nextStep(n) {
+      document.querySelectorAll('.card > div').forEach(d => d.classList.add('hidden'));
+      document.getElementById('step' + n).classList.remove('hidden');
+    }
+    function wrong() {
+      alert('Kayaknya itu bukan cara terbaik dehh... ');
+    }
+    function correct(btn) {
+      btn.classList.add('correct');
+      setTimeout(() => nextStep(3), 600);
+    }
+  </script>
+</body>
+</html>
